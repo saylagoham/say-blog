@@ -51,7 +51,7 @@ export default async function ArchivePage({
             <option key={t.id} value={t.slug}>#{t.name}</option>
           ))}
         </select>
-        <button type="submit" className="rounded-lg bg-[var(--ink)] text-white text-sm px-4 py-2">Filter</button>
+        <button type="submit" className="rounded-lg btn-primary text-sm px-4 py-2">Filter</button>
         {(category || tag || q) && (
           <Link href="/archive" className="text-sm text-[var(--blue-ink)] self-center hover:underline">Clear</Link>
         )}

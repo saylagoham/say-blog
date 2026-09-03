@@ -13,9 +13,10 @@ const NAV = [
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-full flex">
-      <aside className="w-56 shrink-0 border-r border-black/10 bg-white flex flex-col">
-        <div className="px-5 h-16 flex items-center border-b border-black/10">
-          <Link href="/" className="font-bold text-lg">Say <span className="text-[var(--ink-soft)] font-normal text-sm">/admin</span></Link>
+      <aside className="w-56 shrink-0 border-r-[3px] border-[var(--baby-blue)] bg-white flex flex-col">
+        <div className="px-5 h-16 flex flex-col justify-center border-b border-black/10">
+          <Link href="/" className="font-bold text-base leading-tight">Say no more</Link>
+          <span className="text-[var(--ink-soft)] font-normal text-xs">/admin</span>
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1">
           {NAV.map((item) => (
@@ -30,7 +31,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <form action={createPost}>
             <button
               type="submit"
-              className="w-full mt-3 px-3 py-2 rounded-lg text-sm font-semibold bg-[var(--ink)] text-white hover:opacity-90"
+              className="w-full mt-3 px-3 py-2 rounded-lg text-sm btn-primary"
             >
               + New Post
             </button>

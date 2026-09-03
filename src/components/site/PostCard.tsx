@@ -24,7 +24,7 @@ export default function PostCard({ post }: { post: PostWithRelations }) {
         )}
       </div>
       {post.categories && (
-        <span className="text-xs font-medium text-[var(--blue-ink)] uppercase tracking-wide">
+        <span className="chip-blue inline-block px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wide">
           {post.categories.name}
         </span>
       )}

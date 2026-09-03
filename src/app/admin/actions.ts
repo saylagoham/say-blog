@@ -100,6 +100,9 @@ export async function unpublishPost(id: string) {
 }
 
 export async function deletePost(id: string) {
+  // ponytail: only deletes the row -- cover/inline images stay orphaned in
+  // Storage. Fine at current scale; if it matters later, walk body_json for
+  // image URLs (+ cover_image_url) and supabase.storage.from("images").remove() them here.
   const supabase = await createClient();
   await supabase.from("posts").delete().eq("id", id);
   revalidatePath("/admin/posts");

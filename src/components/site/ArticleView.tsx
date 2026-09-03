@@ -28,9 +28,8 @@ export default function ArticleView({
       <div className="max-w-[680px] mx-auto mb-8">
         <div className="flex items-center gap-3 text-sm text-[var(--ink-soft)] mb-3">
           {post.categories && (
-            <span className="text-[var(--blue-ink)] font-medium uppercase tracking-wide">{post.categories.name}</span>
+            <span className="chip-blue px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wide">{post.categories.name}</span>
           )}
-          <span>·</span>
           <time>{formatDate(post.published_at ?? post.created_at)}</time>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-3">{post.title || "(untitled)"}</h1>
@@ -53,7 +52,7 @@ export default function ArticleView({
       {post.post_tags.length > 0 && (
         <div className="max-w-[680px] mx-auto mt-10 flex flex-wrap gap-2">
           {post.post_tags.map(({ tags }) => (
-            <span key={tags.id} className="px-3 py-1 rounded-full bg-[var(--blue-tint)] text-[var(--blue-ink)] text-sm">
+            <span key={tags.id} className="chip-yellow px-3 py-1 rounded-full text-sm font-medium">
               #{tags.name}
             </span>
           ))}

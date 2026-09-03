@@ -16,24 +16,26 @@ export default async function HomePage() {
 
   return (
     <div className="max-w-5xl mx-auto px-5 sm:px-8">
-      {/* SAY */}
+      {/* SAY NO MORE */}
       <section className="pt-16 pb-10">
-        <p className="text-sm font-mono uppercase tracking-widest text-[var(--blue-ink)] mb-3">Say</p>
+        <p className="inline-block chip-blue text-sm font-mono uppercase tracking-widest px-2.5 py-1 rounded mb-4">Say no more</p>
         <h1 className="text-3xl sm:text-4xl font-bold leading-tight max-w-2xl">{STATUS_LINE}</h1>
       </section>
 
       {/* CURRENTLY */}
-      <section className="py-8 border-t border-black/10">
-        <p className="text-xs font-mono uppercase tracking-widest text-[var(--ink-soft)] mb-3">Currently</p>
-        <p className="text-lg leading-relaxed max-w-2xl">{CURRENTLY}</p>
+      <section className="section-rule py-10">
+        <div className="highlight-block px-6 py-6 sm:px-8 sm:py-8">
+          <p className="text-xs font-mono uppercase tracking-widest text-[var(--yellow-ink)] mb-3">Currently</p>
+          <p className="text-lg leading-relaxed max-w-2xl">{CURRENTLY}</p>
+        </div>
       </section>
 
       {/* SEOUL -> LONDON */}
       {journeyLatest.length > 0 && (
-        <section className="py-12 border-t border-black/10">
+        <section className="section-rule py-12">
           <div className="flex items-baseline justify-between mb-6">
             <h2 className="text-xl font-bold">Seoul → London</h2>
-            <Link href="/journeys/seoul-to-london" className="text-sm text-[var(--blue-ink)] hover:underline">
+            <Link href="/journeys/seoul-to-london" className="text-sm font-medium text-[var(--blue-ink)] hover:underline">
               전체 보기 →
             </Link>
           </div>
@@ -48,7 +50,7 @@ export default async function HomePage() {
       )}
 
       {/* LATEST */}
-      <section className="py-12 border-t border-black/10">
+      <section className="section-rule py-12">
         <h2 className="text-xl font-bold mb-6">Latest</h2>
         {latest.length === 0 ? (
           <p className="text-[var(--ink-soft)]">아직 게시된 글이 없습니다.</p>
@@ -62,14 +64,16 @@ export default async function HomePage() {
       </section>
 
       {/* THE ARCHIVE */}
-      <section className="py-12 border-t border-black/10">
+      <section className="section-rule py-12">
         <h2 className="text-xl font-bold mb-6">The Archive</h2>
         <div className="flex flex-wrap gap-3">
-          {categories.map((c) => (
+          {categories.map((c, i) => (
             <Link
               key={c.id}
               href={`/category/${c.slug}`}
-              className="px-4 py-2 rounded-full border border-black/15 text-sm font-medium hover:border-[var(--baby-blue)] hover:bg-[var(--blue-tint)] transition"
+              className={`px-4 py-2 rounded-full text-sm font-semibold border border-transparent transition hover:border-[var(--ink)] ${
+                i % 2 === 0 ? "chip-blue" : "chip-yellow"
+              }`}
             >
               {c.name}
             </Link>
@@ -77,14 +81,14 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ABOUT SAY */}
-      <section className="py-16 border-t border-black/10">
+      {/* ABOUT SAY NO MORE */}
+      <section className="section-rule py-16">
         <div className="max-w-xl">
-          <h2 className="text-xl font-bold mb-4">About Say</h2>
+          <h2 className="text-xl font-bold mb-4">About Say no more</h2>
           <p className="text-[var(--ink-soft)] leading-relaxed mb-4">
-            안녕하세요, Say입니다. 서울에서 런던으로 워킹홀리데이를 준비하며, 삶과 영어 공부, 돈, 새로운 도전에 대한 이야기를 기록합니다.
+            안녕하세요, 세이입니다. 서울에서 런던으로 워킹홀리데이를 준비하며, 삶과 영어 공부, 돈, 새로운 도전에 대한 이야기를 기록합니다.
           </p>
-          <Link href="/about" className="text-sm font-medium text-[var(--blue-ink)] hover:underline">
+          <Link href="/about" className="text-sm font-semibold text-[var(--blue-ink)] hover:underline">
             더 알아보기 →
           </Link>
         </div>

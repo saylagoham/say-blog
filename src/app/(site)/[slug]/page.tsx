@@ -8,7 +8,7 @@ export default async function ArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = await getPostBySlug(decodeURIComponent(slug));
   if (!post) notFound();
 
   const [{ prev, next }, related] = await Promise.all([

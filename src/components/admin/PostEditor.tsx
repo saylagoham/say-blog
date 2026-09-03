@@ -103,7 +103,7 @@ export default function PostEditor({
               <button onClick={onUnpublish} className="text-[var(--ink-soft)] hover:underline">Unpublish</button>
             </>
           ) : (
-            <button onClick={onPublish} className="px-3 py-1.5 rounded-lg bg-[var(--ink)] text-white font-medium hover:opacity-90">
+            <button onClick={onPublish} className="px-3 py-1.5 rounded-lg btn-primary">
               Publish
             </button>
           )}

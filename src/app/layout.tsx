@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Say",
-  description: "Say's personal publishing home — life, London, money, English, travel, and everything in between.",
+  title: "Say no more",
+  description: "Say no more — 세이의 삶, 런던, 돈, 영어, 여행을 기록하는 공간.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

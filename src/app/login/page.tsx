@@ -11,9 +11,9 @@ export default async function LoginPage({
     <div className="min-h-screen flex items-center justify-center bg-[var(--warm-white)] px-6">
       <form
         action={signIn}
-        className="w-full max-w-sm bg-white border border-black/10 rounded-2xl p-8 shadow-sm"
+        className="w-full max-w-sm bg-white border-t-[3px] border-[var(--baby-blue)] rounded-2xl p-8 shadow-sm"
       >
-        <h1 className="text-2xl font-bold mb-1">Say</h1>
+        <h1 className="text-2xl font-bold mb-1">Say no more</h1>
         <p className="text-sm text-black/50 mb-6">Owner login</p>
 
         {error && (
@@ -48,7 +48,7 @@ export default async function LoginPage({
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-[var(--ink)] text-white text-sm font-medium py-2.5 hover:opacity-90 transition"
+          className="w-full rounded-lg btn-primary text-sm py-2.5 transition"
         >
           Log in
         </button>

@@ -7,14 +7,15 @@ export default async function CategoryPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = decodeURIComponent(rawSlug);
   const [posts, categories] = await Promise.all([getPostsByCategory(slug), getCategories()]);
   const category = categories.find((c) => c.slug === slug);
   if (!category) notFound();
 
   return (
     <div className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
-      <p className="text-sm font-mono uppercase tracking-widest text-[var(--blue-ink)] mb-2">Category</p>
+      <p className="inline-block chip-blue text-sm font-mono uppercase tracking-widest px-2.5 py-1 rounded mb-2">Category</p>
       <h1 className="text-3xl font-bold mb-2">{category.name}</h1>
       {category.description && <p className="text-[var(--ink-soft)] mb-10 max-w-xl">{category.description}</p>}
 

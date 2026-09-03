@@ -9,7 +9,8 @@ export default async function JourneyPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = decodeURIComponent(rawSlug);
   const supabase = await createClient();
   const { data: journey } = await supabase.from("journeys").select("*").eq("slug", slug).maybeSingle();
   if (!journey) notFound();
@@ -18,7 +19,7 @@ export default async function JourneyPage({
 
   return (
     <div className="max-w-3xl mx-auto px-5 sm:px-8 py-12">
-      <p className="text-sm font-mono uppercase tracking-widest text-[var(--blue-ink)] mb-2">Journey</p>
+      <p className="inline-block chip-blue text-sm font-mono uppercase tracking-widest px-2.5 py-1 rounded mb-2">Journey</p>
       <h1 className="text-3xl font-bold mb-3">{journey.name}</h1>
       {journey.description && <p className="text-[var(--ink-soft)] mb-12 max-w-xl">{journey.description}</p>}
 

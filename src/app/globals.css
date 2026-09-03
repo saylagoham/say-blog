@@ -82,6 +82,37 @@ body {
   height: auto;
 }
 
+/* -- brand color system -- */
+.section-rule {
+  border-top: 3px solid var(--baby-blue);
+}
+
+.chip-blue {
+  background: var(--baby-blue);
+  color: var(--ink);
+}
+
+.chip-yellow {
+  background: var(--blonde-yellow);
+  color: var(--ink);
+}
+
+.btn-primary {
+  background: var(--baby-blue);
+  color: var(--ink);
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.btn-primary:hover {
+  background: var(--blue-ink);
+  color: var(--warm-white);
+}
+
+.highlight-block {
+  background: var(--blonde-yellow);
+  border-radius: 4px;
+}
+
 .prose-say figcaption {
   font-size: 0.85em;
   color: var(--ink-soft);
