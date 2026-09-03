@@ -1,26 +1,90 @@
 @import "tailwindcss";
+@import "pretendard/dist/web/variable/pretendardvariable.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --warm-white: #faf8f2;
+  --ink: #211e19;
+  --ink-soft: #54514a;
+  --line: #e4dfd3;
+  --baby-blue: #aacff1;
+  --blue-ink: #2e5c8a;
+  --blue-tint: #edf4fc;
+  --blonde-yellow: #fff4bb;
+  --yellow-ink: #7a6b12;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--warm-white);
+  --color-foreground: var(--ink);
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, "Segoe UI", sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--warm-white);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.prose-say {
+  max-width: 680px;
+}
+
+.prose-say p {
+  margin: 1.1em 0;
+  line-height: 1.85;
+}
+
+.prose-say h1, .prose-say h2, .prose-say h3 {
+  font-weight: 700;
+  margin: 1.6em 0 0.6em;
+  line-height: 1.3;
+}
+
+.prose-say h1 { font-size: 1.7em; }
+.prose-say h2 { font-size: 1.4em; }
+.prose-say h3 { font-size: 1.15em; }
+
+.prose-say a {
+  color: var(--blue-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-say blockquote {
+  border-left: 3px solid var(--baby-blue);
+  padding-left: 1em;
+  margin: 1.4em 0;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.prose-say ul, .prose-say ol {
+  margin: 1.1em 0;
+  padding-left: 1.4em;
+}
+.prose-say ul { list-style: disc; }
+.prose-say ol { list-style: decimal; }
+
+.prose-say hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 2.5em 0;
+}
+
+.prose-say mark {
+  border-radius: 2px;
+  padding: 0 0.1em;
+}
+
+.prose-say img {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+}
+
+.prose-say figcaption {
+  font-size: 0.85em;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 0.5em;
 }
