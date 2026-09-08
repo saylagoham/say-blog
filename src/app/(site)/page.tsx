@@ -2,9 +2,17 @@ import Link from "next/link";
 import { getPublishedPosts, getPostsByJourney, getCategories } from "@/lib/posts";
 import PostCard from "@/components/site/PostCard";
 
-// Plain constants for now -- ask to make these admin-editable once the site is live.
-const STATUS_LINE = "서울에서, 런던으로 갈 준비를 하는 중입니다.";
-const CURRENTLY = "워킹홀리데이 비자를 준비하면서 영어 공부와 사이드 프로젝트를 병행하고 있어요. 매주 새로운 걸 시도해보는 중입니다.";
+// Plain constant for now -- ask to make this admin-editable once the site is live.
+const INTRO = "세계여행 이후 영국워홀 ing~";
+
+// UI-only filter/relabel for the homepage Archive section.
+// ponytail: display-only mapping, DB categories (life/trying-things/guides) are untouched — see chat for the full-cleanup SQL if a real prune is wanted later.
+const ARCHIVE_CATEGORIES: Record<string, string> = {
+  travel: "Travel",
+  london: "UK",
+  money: "Money",
+  english: "English",
+};
 
 export default async function HomePage() {
   const [latest, journeyPosts, categories] = await Promise.all([
@@ -16,18 +24,34 @@ export default async function HomePage() {
 
   return (
     <div className="max-w-5xl mx-auto px-5 sm:px-8">
-      {/* SAY NO MORE */}
+      {/* HERO */}
       <section className="pt-16 pb-10">
-        <p className="inline-block chip-blue text-sm font-mono uppercase tracking-widest px-2.5 py-1 rounded mb-4">Say no more</p>
-        <h1 className="text-3xl sm:text-4xl font-bold leading-tight max-w-2xl">{STATUS_LINE}</h1>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/59D22DD4-0493-4013-8FC2-41E94B3BB0B2.PNG"
+              alt="세이 Celine"
+              className="w-full h-full object-cover scale-125"
+            />
+          </div>
+          <span className="text-2xl font-bold">세이 Celine</span>
+        </div>
+        <p className="text-[var(--ink-soft)]">{INTRO}</p>
       </section>
 
-      {/* CURRENTLY */}
-      <section className="section-rule py-10">
-        <div className="highlight-block px-6 py-6 sm:px-8 sm:py-8">
-          <p className="text-xs font-mono uppercase tracking-widest text-[var(--yellow-ink)] mb-3">Currently</p>
-          <p className="text-lg leading-relaxed max-w-2xl">{CURRENTLY}</p>
-        </div>
+      {/* LATEST */}
+      <section className="section-rule py-12">
+        <h2 className="text-xl font-bold mb-6">최근 기록</h2>
+        {latest.length === 0 ? (
+          <p className="text-[var(--ink-soft)]">아직 게시된 글이 없습니다.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10">
+            {latest.map((post) => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* SEOUL -> LONDON */}
@@ -49,44 +73,32 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* LATEST */}
-      <section className="section-rule py-12">
-        <h2 className="text-xl font-bold mb-6">Latest</h2>
-        {latest.length === 0 ? (
-          <p className="text-[var(--ink-soft)]">아직 게시된 글이 없습니다.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10">
-            {latest.map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
-        )}
-      </section>
-
       {/* THE ARCHIVE */}
       <section className="section-rule py-12">
         <h2 className="text-xl font-bold mb-6">The Archive</h2>
         <div className="flex flex-wrap gap-3">
-          {categories.map((c, i) => (
-            <Link
-              key={c.id}
-              href={`/category/${c.slug}`}
-              className={`px-4 py-2 rounded-full text-sm font-semibold border border-transparent transition hover:border-[var(--ink)] ${
-                i % 2 === 0 ? "chip-blue" : "chip-yellow"
-              }`}
-            >
-              {c.name}
-            </Link>
-          ))}
+          {categories
+            .filter((c) => c.slug in ARCHIVE_CATEGORIES)
+            .map((c, i) => (
+              <Link
+                key={c.id}
+                href={`/category/${c.slug}`}
+                className={`px-4 py-2 rounded-full text-sm font-semibold border border-transparent transition hover:border-[var(--ink)] ${
+                  i % 2 === 0 ? "chip-blue" : "chip-yellow"
+                }`}
+              >
+                {ARCHIVE_CATEGORIES[c.slug]}
+              </Link>
+            ))}
         </div>
       </section>
 
-      {/* ABOUT SAY NO MORE */}
+      {/* ABOUT 세이 CELINE */}
       <section className="section-rule py-16">
         <div className="max-w-xl">
-          <h2 className="text-xl font-bold mb-4">About Say no more</h2>
+          <h2 className="text-xl font-bold mb-4">About 세이 Celine</h2>
           <p className="text-[var(--ink-soft)] leading-relaxed mb-4">
-            안녕하세요, 세이입니다. 서울에서 런던으로 워킹홀리데이를 준비하며, 삶과 영어 공부, 돈, 새로운 도전에 대한 이야기를 기록합니다.
+            세이입니다. 272일간의 세계여행 이후, 영국 워홀의 과정을 기록합니다.
           </p>
           <Link href="/about" className="text-sm font-semibold text-[var(--blue-ink)] hover:underline">
             더 알아보기 →
