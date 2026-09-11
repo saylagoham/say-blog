@@ -26,8 +26,8 @@ export default async function HomePage() {
     <div className="max-w-5xl mx-auto px-5 sm:px-8">
       {/* HERO */}
       <section className="pt-10 sm:pt-16 pb-8 sm:pb-10">
-        <div className="flex items-center gap-3 mb-3 sm:mb-4">
-          <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+          <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/59D22DD4-0493-4013-8FC2-41E94B3BB0B2.PNG"
@@ -35,8 +35,8 @@ export default async function HomePage() {
               className="w-full h-full object-cover scale-125"
             />
           </div>
-          <span className="text-xl sm:text-2xl font-bold break-keep">
-            <span className="chip-blue rounded-full px-2 py-0.5">세이</span> Celine
+          <span className="text-base sm:text-2xl font-bold break-keep">
+            <span className="chip-blue rounded-full px-1.5 py-0.5 sm:px-2">세이</span> Celine
           </span>
         </div>
         <p className="text-[var(--ink-soft)] break-keep">{INTRO}</p>
