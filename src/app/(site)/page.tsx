@@ -35,7 +35,9 @@ export default async function HomePage() {
               className="w-full h-full object-cover scale-125"
             />
           </div>
-          <span className="text-xl sm:text-2xl font-bold break-keep">세이 Celine</span>
+          <span className="text-xl sm:text-2xl font-bold break-keep">
+            <span className="chip-blue rounded-full px-2 py-0.5">세이</span> Celine
+          </span>
         </div>
         <p className="text-[var(--ink-soft)] break-keep">{INTRO}</p>
       </section>
@@ -96,7 +98,9 @@ export default async function HomePage() {
       {/* ABOUT 세이 CELINE */}
       <section className="section-rule py-12 sm:py-16">
         <div className="max-w-xl">
-          <h2 className="text-lg sm:text-xl font-bold mb-4 break-keep">About 세이 Celine</h2>
+          <h2 className="text-lg sm:text-xl font-bold mb-4 break-keep">
+            About <span className="chip-blue rounded-full px-2 py-0.5">세이</span> Celine
+          </h2>
           <p className="text-[var(--ink-soft)] leading-relaxed mb-4 break-keep">
             세이입니다. 272일간의 세계여행 이후, 영국 워홀의 과정을 기록합니다.
           </p>
