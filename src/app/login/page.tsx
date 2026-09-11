@@ -52,6 +52,10 @@ export default async function LoginPage({
         >
           Log in
         </button>
+
+        <a href="/forgot-password" className="block mt-4 text-sm text-center text-[var(--blue-ink)] hover:underline">
+          비밀번호를 잊으셨나요?
+        </a>
       </form>
     </div>
   );
