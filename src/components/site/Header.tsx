@@ -5,14 +5,14 @@ export default function Header() {
     <header className="border-b-[3px] border-[var(--baby-blue)]">
       <div className="max-w-5xl mx-auto px-5 sm:px-8 py-3 sm:py-0 sm:h-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-0">
         <div className="w-fit">
-          <Link href="/" className="text-lg sm:text-xl font-bold tracking-tight inline-block">
+          <Link href="/" className="text-lg sm:text-xl font-bold tracking-tight inline-block leading-none">
             Say no more
           </Link>
           <svg
             viewBox="0 0 60 12"
-            width="1"
+            width="5"
             height="1"
-            className="w-[92%] h-auto block mt-0.5"
+            className="w-[92%] h-auto block -mt-1"
             fill="none"
             aria-hidden="true"
           >
