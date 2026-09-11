@@ -4,11 +4,18 @@ export default function Header() {
   return (
     <header className="border-b-[3px] border-[var(--baby-blue)]">
       <div className="max-w-5xl mx-auto px-5 sm:px-8 py-3 sm:py-0 sm:h-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-0">
-        <div>
+        <div className="w-fit">
           <Link href="/" className="text-lg sm:text-xl font-bold tracking-tight inline-block">
             Say no more
           </Link>
-          <svg viewBox="0 0 60 12" className="w-9 sm:w-6 h-auto block mt-0.5" fill="none" aria-hidden="true">
+          <svg
+            viewBox="0 0 60 12"
+            width="1"
+            height="1"
+            className="w-[92%] h-auto block mt-0.5"
+            fill="none"
+            aria-hidden="true"
+          >
             <path
               d="M1,7 C6,2 11,2 16,7 C21,12 26,12 31,7 C36,2 41,2 46,7 C51,12 56,12 59,7"
               stroke="var(--baby-blue)"
