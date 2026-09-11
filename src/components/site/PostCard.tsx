@@ -28,7 +28,7 @@ export default function PostCard({ post }: { post: PostWithRelations }) {
           {post.categories.name}
         </span>
       )}
-      <h3 className="font-bold text-lg leading-snug mt-1 group-hover:underline decoration-[var(--baby-blue)]">
+      <h3 className="font-bold text-base sm:text-lg leading-snug mt-1 break-keep group-hover:underline decoration-[var(--baby-blue)]">
         {post.title}
       </h3>
       <p className="text-sm text-[var(--ink-soft)] mt-1">{formatDate(post.published_at)}</p>

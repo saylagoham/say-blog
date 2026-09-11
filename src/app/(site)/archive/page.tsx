@@ -28,8 +28,8 @@ export default async function ArchivePage({
   }, {});
 
   return (
-    <div className="max-w-3xl mx-auto px-5 sm:px-8 py-12">
-      <h1 className="text-3xl font-bold mb-8">Archive</h1>
+    <div className="max-w-3xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">Archive</h1>
 
       <form className="flex flex-wrap gap-3 mb-4" method="get">
         <input

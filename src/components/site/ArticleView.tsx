@@ -18,22 +18,22 @@ export default function ArticleView({
   preview?: boolean;
 }) {
   return (
-    <article className="max-w-5xl mx-auto px-5 sm:px-8 py-12">
+    <article className="max-w-5xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
       {preview && (
         <div className="max-w-[680px] mx-auto mb-6 bg-[var(--blonde-yellow)] text-[var(--yellow-ink)] text-sm font-medium px-4 py-2 rounded-lg">
           Preview — this is how the published article will look.
         </div>
       )}
 
-      <div className="max-w-[680px] mx-auto mb-8">
+      <div className="max-w-[680px] mx-auto mb-6 sm:mb-8">
         <div className="flex items-center gap-3 text-sm text-[var(--ink-soft)] mb-3">
           {post.categories && (
             <span className="chip-blue px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wide">{post.categories.name}</span>
           )}
           <time>{formatDate(post.published_at ?? post.created_at)}</time>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-3">{post.title || "(untitled)"}</h1>
-        {post.subtitle && <p className="text-lg text-[var(--ink-soft)] leading-relaxed">{post.subtitle}</p>}
+        <h1 className="text-2xl sm:text-4xl font-bold leading-tight mb-3 break-keep">{post.title || "(untitled)"}</h1>
+        {post.subtitle && <p className="text-base sm:text-lg text-[var(--ink-soft)] leading-relaxed break-keep">{post.subtitle}</p>}
       </div>
 
       {post.cover_image_url && (
@@ -71,9 +71,9 @@ export default function ArticleView({
       )}
 
       {related.length > 0 && (
-        <div className="max-w-5xl mx-auto mt-16 pt-10 border-t border-black/10">
-          <h2 className="text-xl font-bold mb-6">Related</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-10">
+        <div className="max-w-5xl mx-auto mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-black/10">
+          <h2 className="text-lg sm:text-xl font-bold mb-5 sm:mb-6">Related</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-5 sm:gap-x-6 gap-y-8 sm:gap-y-10">
             {related.map((p) => (
               <PostCard key={p.id} post={p} />
             ))}

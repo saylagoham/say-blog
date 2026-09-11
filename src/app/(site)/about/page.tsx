@@ -1,9 +1,9 @@
 export default function AboutPage() {
   return (
-    <div className="max-w-2xl mx-auto px-5 sm:px-8 py-16">
+    <div className="max-w-2xl mx-auto px-5 sm:px-8 py-10 sm:py-16">
       <p className="inline-block chip-yellow text-sm font-mono uppercase tracking-widest px-2.5 py-1 rounded mb-4">About</p>
-      <h1 className="text-3xl font-bold mb-6">세이 Celine</h1>
-      <div className="prose-say">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 break-keep">세이 Celine</h1>
+      <div className="prose-say break-keep">
         <p>
           안녕하세요, 세이입니다. 272일간의 세계여행을 마치고, 영국 워킹홀리데이를 준비하고 살아가는 과정과
           그 사이의 삶, 영어 공부, 돈에 대한 실험, 새로운 도전들을 기록하는 공간입니다.

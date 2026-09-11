@@ -25,8 +25,8 @@ export default async function HomePage() {
   return (
     <div className="max-w-5xl mx-auto px-5 sm:px-8">
       {/* HERO */}
-      <section className="pt-16 pb-10">
-        <div className="flex items-center gap-3 mb-4">
+      <section className="pt-10 sm:pt-16 pb-8 sm:pb-10">
+        <div className="flex items-center gap-3 mb-3 sm:mb-4">
           <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -35,18 +35,18 @@ export default async function HomePage() {
               className="w-full h-full object-cover scale-125"
             />
           </div>
-          <span className="text-2xl font-bold">세이 Celine</span>
+          <span className="text-xl sm:text-2xl font-bold break-keep">세이 Celine</span>
         </div>
-        <p className="text-[var(--ink-soft)]">{INTRO}</p>
+        <p className="text-[var(--ink-soft)] break-keep">{INTRO}</p>
       </section>
 
       {/* LATEST */}
-      <section className="section-rule py-12">
-        <h2 className="text-xl font-bold mb-6">최근 기록</h2>
+      <section className="section-rule py-10 sm:py-12">
+        <h2 className="text-lg sm:text-xl font-bold mb-5 sm:mb-6">최근 기록</h2>
         {latest.length === 0 ? (
           <p className="text-[var(--ink-soft)]">아직 게시된 글이 없습니다.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 sm:gap-x-6 gap-y-8 sm:gap-y-10">
             {latest.map((post) => (
               <PostCard key={post.id} post={post} />
             ))}
@@ -56,16 +56,16 @@ export default async function HomePage() {
 
       {/* SEOUL -> LONDON */}
       {journeyLatest.length > 0 && (
-        <section className="section-rule py-12">
-          <div className="flex items-baseline justify-between mb-6">
-            <h2 className="text-xl font-bold">Seoul → London</h2>
-            <Link href="/journeys/seoul-to-london" className="text-sm font-medium text-[var(--blue-ink)] hover:underline">
+        <section className="section-rule py-10 sm:py-12">
+          <div className="flex items-baseline justify-between mb-5 sm:mb-6">
+            <h2 className="text-lg sm:text-xl font-bold">Seoul → London</h2>
+            <Link href="/journeys/seoul-to-london" className="text-sm font-medium text-[var(--blue-ink)] hover:underline whitespace-nowrap">
               전체 보기 →
             </Link>
           </div>
-          <div className="flex gap-5 overflow-x-auto pb-2 -mx-5 px-5 sm:mx-0 sm:px-0">
+          <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-2 -mx-5 px-5 sm:mx-0 sm:px-0">
             {journeyLatest.map((post) => (
-              <div key={post.id} className="w-56 flex-shrink-0">
+              <div key={post.id} className="w-44 sm:w-56 flex-shrink-0">
                 <PostCard post={post} />
               </div>
             ))}
@@ -74,16 +74,16 @@ export default async function HomePage() {
       )}
 
       {/* THE ARCHIVE */}
-      <section className="section-rule py-12">
-        <h2 className="text-xl font-bold mb-6">The Archive</h2>
-        <div className="flex flex-wrap gap-3">
+      <section className="section-rule py-10 sm:py-12">
+        <h2 className="text-lg sm:text-xl font-bold mb-5 sm:mb-6">The Archive</h2>
+        <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
           {categories
             .filter((c) => c.slug in ARCHIVE_CATEGORIES)
             .map((c, i) => (
               <Link
                 key={c.id}
                 href={`/category/${c.slug}`}
-                className={`px-4 py-2 rounded-full text-sm font-semibold border border-transparent transition hover:border-[var(--ink)] ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold border border-transparent transition hover:border-[var(--ink)] text-center sm:text-left ${
                   i % 2 === 0 ? "chip-blue" : "chip-yellow"
                 }`}
               >
@@ -94,10 +94,10 @@ export default async function HomePage() {
       </section>
 
       {/* ABOUT 세이 CELINE */}
-      <section className="section-rule py-16">
+      <section className="section-rule py-12 sm:py-16">
         <div className="max-w-xl">
-          <h2 className="text-xl font-bold mb-4">About 세이 Celine</h2>
-          <p className="text-[var(--ink-soft)] leading-relaxed mb-4">
+          <h2 className="text-lg sm:text-xl font-bold mb-4 break-keep">About 세이 Celine</h2>
+          <p className="text-[var(--ink-soft)] leading-relaxed mb-4 break-keep">
             세이입니다. 272일간의 세계여행 이후, 영국 워홀의 과정을 기록합니다.
           </p>
           <Link href="/about" className="text-sm font-semibold text-[var(--blue-ink)] hover:underline">
