@@ -118,3 +118,27 @@ insert into categories (name, slug, sort_order) values
 
 insert into journeys (name, slug, description) values
   ('Seoul → London', 'seoul-to-london', 'UK Working Holiday: visa, moving, flat hunting, job hunting, and building a new life in London.');
+
+-- New-post email subscribers (homepage + post-page signup forms).
+-- Run this block once in the Supabase SQL editor if the table doesn't exist yet.
+create table if not exists newsletter_subscribers (
+  id uuid primary key default gen_random_uuid(),
+  email text not null unique,
+  status text not null default 'active',
+  subscribed_at timestamptz not null default now(),
+  source text
+);
+
+alter table newsletter_subscribers enable row level security;
+
+-- Anyone can subscribe (insert), but no SELECT/UPDATE/DELETE policy exists
+-- for anon, so the subscriber list can never be read or modified from the
+-- client -- only the signed-in owner (via "authenticated") can read it,
+-- and only the Supabase SQL editor (which runs as postgres, bypassing RLS)
+-- can otherwise manage rows for now.
+create policy "public can subscribe" on newsletter_subscribers for insert
+  to anon
+  with check (true);
+
+create policy "owner reads subscribers" on newsletter_subscribers for select
+  using (auth.role() = 'authenticated');

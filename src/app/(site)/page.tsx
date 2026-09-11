@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getPublishedPosts, getPostsByJourney, getCategories } from "@/lib/posts";
 import { CATEGORY_LABELS } from "@/lib/categoryLabels";
 import PostCard from "@/components/site/PostCard";
+import NewsletterSignup from "@/components/site/NewsletterSignup";
 
 // Plain constant for now -- ask to make this admin-editable once the site is live.
 const INTRO = "세계여행 이후 영국워홀 ing~";
@@ -88,6 +89,8 @@ export default async function HomePage() {
           })}
         </div>
       </section>
+
+      <NewsletterSignup variant="homepage" source="homepage" />
 
       {/* ABOUT 세이 CELINE */}
       <section className="section-rule py-12 sm:py-16">

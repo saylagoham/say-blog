@@ -2,6 +2,7 @@ import Link from "next/link";
 import { formatDate } from "@/components/site/PostCard";
 import TiptapRenderer from "@/components/editor/TiptapRenderer";
 import PostCard from "@/components/site/PostCard";
+import NewsletterSignup from "@/components/site/NewsletterSignup";
 import type { PostWithRelations } from "@/lib/types";
 
 export default function ArticleView({
@@ -69,6 +70,8 @@ export default function ArticleView({
           ) : <span />}
         </div>
       )}
+
+      <NewsletterSignup variant="post" source="post" />
 
       {related.length > 0 && (
         <div className="max-w-5xl mx-auto mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-black/10">
