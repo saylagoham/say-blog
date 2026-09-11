@@ -15,6 +15,12 @@ export const SayImage = Image.extend({
   },
 });
 
+const SIZE_PRESETS = [
+  { label: "Small", value: 55 },
+  { label: "Medium", value: 78 },
+  { label: "Full", value: 100 },
+];
+
 function ImageView({ node, updateAttributes, selected, editor }: ReactNodeViewProps) {
   const { src, alt, caption, align, width } = node.attrs;
   const editable = editor.isEditable;
@@ -25,8 +31,8 @@ function ImageView({ node, updateAttributes, selected, editor }: ReactNodeViewPr
   return (
     <NodeViewWrapper className="my-6">
       <figure
-        className={`${align === "full" ? "w-full" : ""} ${alignClass}`}
-        style={{ width: align === "full" ? "100%" : `${width}%` }}
+        className={`say-img-figure ${align === "full" ? "w-full" : ""} ${alignClass}`}
+        style={{ "--img-w": align === "full" ? "100%" : `${width}%` } as React.CSSProperties}
       >
         <img src={src} alt={alt || ""} className="w-full h-auto rounded-lg" />
         {editable ? (
@@ -57,19 +63,21 @@ function ImageView({ node, updateAttributes, selected, editor }: ReactNodeViewPr
                 </button>
               ))}
             </div>
-            <label className="flex items-center gap-1">
-              width
-              <input
-                type="range"
-                min={25}
-                max={100}
-                step={5}
-                value={width}
-                disabled={align === "full"}
-                onChange={(e) => updateAttributes({ width: Number(e.target.value) })}
-              />
-              <span className="w-8 text-right">{align === "full" ? 100 : width}%</span>
-            </label>
+            <div className="flex gap-1">
+              {SIZE_PRESETS.map((p) => (
+                <button
+                  key={p.label}
+                  type="button"
+                  disabled={align === "full"}
+                  onClick={() => updateAttributes({ width: p.value })}
+                  className={`px-2 py-1 rounded disabled:opacity-40 ${
+                    (align === "full" ? 100 : width) === p.value ? "bg-[var(--baby-blue)]" : "hover:bg-black/5"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
             <input
               value={alt ?? ""}
               onChange={(e) => updateAttributes({ alt: e.target.value })}

@@ -20,12 +20,12 @@ export default function ArticleView({
   return (
     <article className="max-w-5xl mx-auto px-5 sm:px-8 py-8 sm:py-12">
       {preview && (
-        <div className="max-w-[680px] mx-auto mb-6 bg-[var(--blonde-yellow)] text-[var(--yellow-ink)] text-sm font-medium px-4 py-2 rounded-lg">
+        <div className="max-w-[720px] mx-auto mb-6 bg-[var(--blonde-yellow)] text-[var(--yellow-ink)] text-sm font-medium px-4 py-2 rounded-lg">
           Preview — this is how the published article will look.
         </div>
       )}
 
-      <div className="max-w-[680px] mx-auto mb-6 sm:mb-8">
+      <div className="max-w-[720px] mx-auto mb-6 sm:mb-8">
         <div className="flex items-center gap-3 text-sm text-[var(--ink-soft)] mb-3">
           {post.categories && (
             <span className="chip-blue px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wide">{post.categories.name}</span>
@@ -41,7 +41,7 @@ export default function ArticleView({
         <img
           src={post.cover_image_url}
           alt={post.title}
-          className="w-full rounded-xl mb-10 max-h-[520px] object-cover"
+          className="block w-full h-auto max-w-[900px] mx-auto rounded-xl mb-10"
         />
       )}
 
@@ -50,7 +50,7 @@ export default function ArticleView({
       </div>
 
       {post.post_tags.length > 0 && (
-        <div className="max-w-[680px] mx-auto mt-10 flex flex-wrap gap-2">
+        <div className="max-w-[720px] mx-auto mt-10 flex flex-wrap gap-2">
           {post.post_tags.map(({ tags }) => (
             <span key={tags.id} className="chip-yellow px-3 py-1 rounded-full text-sm font-medium">
               #{tags.name}
@@ -60,7 +60,7 @@ export default function ArticleView({
       )}
 
       {(prev || next) && (
-        <div className="max-w-[680px] mx-auto mt-10 pt-6 border-t border-black/10 flex justify-between text-sm">
+        <div className="max-w-[720px] mx-auto mt-10 pt-6 border-t border-black/10 flex justify-between text-sm">
           {prev ? (
             <Link href={`/${prev.slug}`} className="text-[var(--blue-ink)] hover:underline">← {prev.title}</Link>
           ) : <span />}

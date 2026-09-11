@@ -26,17 +26,33 @@ body {
 }
 
 .prose-say {
-  max-width: 680px;
+  max-width: 900px;
+}
+
+/* Text stays in a narrow reading column; images (figures) are free to use
+   the full prose-say width so they can "break out" wider than the text. */
+.prose-say p,
+.prose-say h1,
+.prose-say h2,
+.prose-say h3,
+.prose-say ul,
+.prose-say ol,
+.prose-say blockquote {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .prose-say p {
-  margin: 1.1em 0;
+  margin-top: 1.1em;
+  margin-bottom: 1.1em;
   line-height: 1.85;
 }
 
 .prose-say h1, .prose-say h2, .prose-say h3 {
   font-weight: 700;
-  margin: 1.6em 0 0.6em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
   line-height: 1.3;
 }
 
@@ -53,13 +69,15 @@ body {
 .prose-say blockquote {
   border-left: 3px solid var(--baby-blue);
   padding-left: 1em;
-  margin: 1.4em 0;
+  margin-top: 1.4em;
+  margin-bottom: 1.4em;
   color: var(--ink-soft);
   font-style: italic;
 }
 
 .prose-say ul, .prose-say ol {
-  margin: 1.1em 0;
+  margin-top: 1.1em;
+  margin-bottom: 1.1em;
   padding-left: 1.4em;
 }
 .prose-say ul { list-style: disc; }
@@ -80,6 +98,19 @@ body {
   border-radius: 8px;
   max-width: 100%;
   height: auto;
+}
+
+/* Small/Medium/Full image size presets (SayImage node). Width is relative to
+   the wide prose-say column, so "Full" can exceed the text reading width. */
+.say-img-figure {
+  width: var(--img-w, 100%);
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .say-img-figure {
+    width: max(var(--img-w, 100%), 80%);
+  }
 }
 
 /* -- brand color system -- */
