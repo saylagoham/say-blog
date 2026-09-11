@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import RichTextEditor, { uploadFile } from "@/components/editor/RichTextEditor";
 import { savePost, publishPost, unpublishPost, deletePost, type SavePostInput } from "@/app/admin/actions";
 import type { Category, Journey, PostWithRelations } from "@/lib/types";
+import { CATEGORY_LABELS } from "@/lib/categoryLabels";
 
 export default function PostEditor({
   post,
@@ -170,9 +171,14 @@ export default function PostEditor({
               className="w-full rounded-lg border border-black/15 px-3 py-2 text-sm"
             >
               <option value="">None</option>
-              {categories.map((c) => (
-                <option key={c.id} value={c.id}>{c.name}</option>
-              ))}
+              {categories.map((c) => {
+                const label = CATEGORY_LABELS[c.slug];
+                return (
+                  <option key={c.id} value={c.id}>
+                    {label ? `${label.ko} ${label.en}` : c.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
 

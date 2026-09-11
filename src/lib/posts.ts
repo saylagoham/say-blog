@@ -54,7 +54,7 @@ export async function getPostsByCategory(categorySlug: string) {
   const supabase = await createClient();
   const { data } = await supabase
     .from("posts")
-    .select(`${SELECT_WITH_RELATIONS}, categories!inner(*)`)
+    .select("*, categories!inner(*), journeys(*), post_tags(tags(*))")
     .eq("status", "published")
     .eq("categories.slug", categorySlug)
     .order("published_at", { ascending: false });

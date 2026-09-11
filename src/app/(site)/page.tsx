@@ -1,19 +1,10 @@
 import Link from "next/link";
 import { getPublishedPosts, getPostsByJourney, getCategories } from "@/lib/posts";
+import { CATEGORY_LABELS } from "@/lib/categoryLabels";
 import PostCard from "@/components/site/PostCard";
 
 // Plain constant for now -- ask to make this admin-editable once the site is live.
 const INTRO = "세계여행 이후 영국워홀 ing~";
-
-// UI-only filter/relabel for the homepage Archive section, in display order.
-// ponytail: display-only mapping, DB categories (trying-things/guides) are untouched — see chat for the full-cleanup SQL if a real prune is wanted later.
-const ARCHIVE_CATEGORIES: Record<string, { ko: string; en: string }> = {
-  london: { ko: "영국살이", en: "UK" },
-  life: { ko: "일상", en: "Daily" },
-  travel: { ko: "여행", en: "Travel" },
-  english: { ko: "영어공부", en: "English" },
-  money: { ko: "돈 이야기", en: "Money" },
-};
 
 export default async function HomePage() {
   const [latest, journeyPosts, categories] = await Promise.all([
@@ -80,7 +71,7 @@ export default async function HomePage() {
       <section className="section-rule py-10 sm:py-12">
         <h2 className="text-lg sm:text-xl font-bold mb-5 sm:mb-6">The Archive</h2>
         <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
-          {Object.entries(ARCHIVE_CATEGORIES).map(([slug, label], i) => {
+          {Object.entries(CATEGORY_LABELS).map(([slug, label], i) => {
             const c = categories.find((c) => c.slug === slug);
             if (!c) return null;
             return (
